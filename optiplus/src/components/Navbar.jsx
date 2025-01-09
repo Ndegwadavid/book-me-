@@ -25,8 +25,8 @@ const Navbar = () => {
     { name: 'Book Appointment', icon: <Calendar className="w-5 h-5" />, path: '/book' },
    
     { name: 'FAQ', icon: <HelpCircle className="w-5 h-5" />, path: '/faq' },
-    { name: 'Shop', icon: <ShoppingBag className="w-5 h-5" />, href: 'https://shop.optiplus.co.ke' },
-    { name: 'Blog', icon: <BookOpen className="w-5 h-5" />, href: 'https://blog.optiplus.co.ke' }
+    { name: 'Shop', icon: <ShoppingBag className="w-5 h-5" />, href: 'https://optiplus.co.ke' },
+    { name: 'Blog', icon: <BookOpen className="w-5 h-5" />, href: 'https://optiplus.co.ke' }
   ];
 
   return (
@@ -79,7 +79,7 @@ const Navbar = () => {
               ))}
               <motion.div whileHover={{ scale: 1.05 }}>
                 <a
-                  href="https://shop.optiplus.co.ke/account"
+                  href="https://optiplus.co.ke/"
                   className="flex items-center space-x-1 text-gray-600 hover:text-blue-600 px-3 py-2"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -174,7 +174,7 @@ const Navbar = () => {
                   ))}
                   
                   <a
-                    href="https://shop.optiplus.co.ke/account"
+                    href="https://optiplus.co.ke"
                     className="flex items-center justify-between w-full p-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg group"
                     target="_blank"
                     rel="noopener noreferrer"

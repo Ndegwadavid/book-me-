@@ -98,31 +98,29 @@ const AppointmentPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     const generatedBookingNumber = generateBookingNumber();
-
+  
     try {
-      const templateParams = {
-        from_name: "OptiPlus Eye Care",
-        to_name: `${formData.firstName} ${formData.lastName}`,
-        booking_number: generatedBookingNumber,
-        service: formData.service,
-        appointment_date: format(formData.appointmentDate, 'MMMM do, yyyy'),
-        appointment_time: formData.appointmentTime,
-        location: formData.location,
-        branch_phone: formData.location.includes('Ronald Ngala') ? '+254 702 220 545' : '+254 105 165 560',
-        current_year: new Date().getFullYear().toString(),
-        reply_to: formData.email
-      };
-
-      console.log('Sending email with params:', templateParams);
-
-      await emailjs.send(
-        'service_69u1v3l',
-        'template_sx0elwh',
-        templateParams,
-        '2hXTMC4I1irfwVv0b'
-      );
-
-      console.log('Email sent successfully');
+      const response = await fetch('http://your-domain.com/api/book-appointment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          booking_number: generatedBookingNumber,
+          to_name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          service: formData.service,
+          appointment_date: format(formData.appointmentDate, 'MMMM do, yyyy'),
+          appointment_time: formData.appointmentTime,
+          location: formData.location,
+          branch_phone: formData.location.includes('Ronald Ngala') ? '+254 702 220 545' : '+254 105 165 560'
+        })
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to book appointment');
+      }
+  
       setBookingNumber(generatedBookingNumber);
       setBookingComplete(true);
     } catch (error) {
